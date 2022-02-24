@@ -2,5 +2,16 @@
   <div class="container">
     <h1>Watch List!</h1>
     <p>Make lists with your favorite movies</p>
-  </div>
+    <a class="btn btn-flat" href="#"><%= link_to 'Create a new List', new_list_path(@list) %></a>  </div>
 </div>
+
+<table class='table'>
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= link_to 'Show', list_path(list), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
