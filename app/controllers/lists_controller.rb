@@ -18,7 +18,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to @list, notice: 'List was successfully created.'
     else
-      render "lists/show"
+      render :new
     end
   end
 
