@@ -1,5 +1,7 @@
 require "open-uri"
 require "json"
+List.destroy_all
+Bookmark.destroy_all
 Movie.destroy_all
 
 3.times do |page|
@@ -8,4 +10,8 @@ Movie.destroy_all
   api_response['results'].each do |result|
     Movie.create!(title: result['title'], overview: result['overview'], poster_url: "https://image.tmdb.org/t/p/original/#{result['backdrop_path']}", rating: result['vote_average'])
   end
+end
+
+5.times do
+  List.create!(name: Faker::Movie.title)
 end

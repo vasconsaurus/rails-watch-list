@@ -14,6 +14,9 @@
             <h5 class="card-title"><%= movie.title %></h5>
             <p class="card-text"><%= movie.overview %></p>
             <p class="card-text"> Review: <%= bookmark.comment %></p>
+            <%= link_to bookmark_path(bookmark), method: 'DELETE', data: { confirm: 'Are you sure?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
           </div>
         </div>
       </div>

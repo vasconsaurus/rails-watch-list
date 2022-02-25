@@ -4,9 +4,9 @@
       <h3>New Bookmark</h3>
 
       <%= simple_form_for [@list, @bookmark] do |f| %>
-        <%= f.association :movie, as: :check_boxes %>
+        <%= f.association :movie %>
         <%= f.input :comment %>
-        <%= f.submit "Add new Bookmark", class: 'btn btn btn-success'%>
+        <%= f.submit "Add new Bookmark", class: 'btn btn-success'%>
       <% end %>
 
       <%= link_to 'Back', root_path %>
