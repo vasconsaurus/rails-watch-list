@@ -13,5 +13,9 @@ Movie.destroy_all
 end
 
 5.times do
-  List.create!(name: Faker::Movie.title)
+  api_response = URI.open("http://unsplash.it/400/300/?random")
+
+  list = List.new(name: Faker::Movie.title)
+  list.photo.attach(io: api_response, filename: 'nes.png', content_type: 'image/png')
+  list.save!
 end
