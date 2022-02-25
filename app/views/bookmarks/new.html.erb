@@ -1,3 +1,15 @@
-<div class="h1">New Bookmark</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <h3>New Bookmark</h3>
 
-Checkout simple_form docs about f.association to easily create a select dropdown for our list of movies.
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie, include_hidden: false %>
+        <%= f.input :comment %>
+        <%= f.submit "Add new Bookmark", class: 'btn btn btn-primary'%>
+      <% end %>
+
+      <%= link_to 'Back', root_path %> |
+    </div>
+  </div>
+</div>
