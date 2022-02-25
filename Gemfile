@@ -59,3 +59,6 @@ gem "faker"
 
 # security
 gem 'dotenv-rails', groups: [:development, :test]
+
+#image management
+gem 'cloudinary', '~> 1.16.0'
