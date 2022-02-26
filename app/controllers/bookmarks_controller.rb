@@ -1,20 +1,18 @@
 class BookmarksController < ApplicationController
-  before_action :find_list, only: [:new, :create]
+  before_action :find_list, only: [ :new, :create ]
 
   def new
     @bookmark = Bookmark.new
-    # @list = List.find(params[:list_id])
   end
 
   def create
-    # @list = List.find(params[:list_id])
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
 
     if @bookmark.save
       redirect_to list_path(@list)
     else
-      render 'new'
+      render 'lists/show'
     end
   end
 
