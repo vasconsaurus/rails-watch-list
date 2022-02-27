@@ -13,7 +13,7 @@ Movie.destroy_all
 end
 
 5.times do
-  api_response = URI.open("http://unsplash.it/400/300/?random")
+  api_response = URI.open("http://unsplash.it/1200/600/?random")
 
   list = List.new(name: Faker::Movie.title)
   list.photo.attach(io: api_response, filename: 'nes.png', content_type: 'image/png')

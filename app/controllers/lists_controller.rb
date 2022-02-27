@@ -7,6 +7,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     # o mesmo que: @bookmark = Bookmark.new(list_id: @list.id)
     @bookmark = @list.bookmarks.new
+    @review = @list.reviews.new
   end
 
   def new
