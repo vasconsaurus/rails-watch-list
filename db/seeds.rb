@@ -12,7 +12,7 @@ Movie.destroy_all
   end
 end
 
-5.times do
+2.times do
   api_response = URI.open("http://unsplash.it/1200/600/?random")
 
   list = List.new(name: Faker::Movie.title)
