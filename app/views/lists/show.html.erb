@@ -11,15 +11,15 @@
 
   <div class="row">
     <% @list.bookmarks.includes(:movie).each do |bookmark| %>
-      <div class="col-6">
-        <div class="card">
+      <div class="col-12 col-md-6">
+        <div class="card my-3">
           <img src="<%= bookmark.movie.poster_url %>" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title"><%= bookmark.movie.title %></h5>
+            <h3 class="card-title mt-2"><%= bookmark.movie.title %></h3>
             <p class="card-text"><%= bookmark.movie.overview %></p>
-            <p class="card-text"> Review: <%= bookmark.comment %></p>
+            <p class="card-text mt-4"> Review: <%= bookmark.comment %></p>
             <%= link_to bookmark_path(bookmark), method: 'DELETE', data: { confirm: 'Are you sure?' } do %>
-              <i class="fas fa-trash-alt"></i>
+              <p><span class="material-icons-outlined">delete_outline</span> delete </p>
             <% end %>
           </div>
         </div>
@@ -27,8 +27,18 @@
     <% end %>
   </div>
 
-  <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
-  <%= render "reviews/form", list: @list, review: @review %>
+  <div class="row">
+    <div class="col-12 col-md-6 ">
+      <div class="card my-3 bg-warning border-0">
+        <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card my-3 bg-warning border-0">
+      <%= render "reviews/form", list: @list, review: @review %>
+      </div>
+    </div>
+  </div>
 
   <%= link_to 'Back', root_path %>
 

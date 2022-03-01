@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8">
-      <h3>New Bookmark</h3>
+    <div class="col-8 my-5">
+      <span class="material-icons-outlined">add_circle_outline</span>
+      <h5 class="mb-5">New Bookmark</h5>
 
       <%= simple_form_for [ list, bookmark ] do |f| %>
-        <%= f.association :movie %>
+        <%= f.association :movie, collection: Movie.order(:title) %>
         <%= f.input :comment %>
-        <%= f.submit "Add new Bookmark", class: 'btn btn-success'%>
+        <%= f.submit "Add new Bookmark", class: 'btn btn-light'%>
       <% end %>
 
     </div>
