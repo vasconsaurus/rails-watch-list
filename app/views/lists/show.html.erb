@@ -35,18 +35,34 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col-12 col-md-6 ">
-      <div class="card my-3 bg-warning border-0" id="add_bookmark">
-        <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="card my-3 bg-warning border-0" id="add_review">
-      <%= render "reviews/form", list: @list, review: @review %>
+    <div class="col-12 col-md-12 ">
+      <div class="card my-3  border-warning border-2 border-end-0 border-start-0 list-review pt-5 pb-5">
+        <div class="card-body">
+          <h3 class="card-title mb-5"><%= @list.name %> Review</h3>
+          <% @list.reviews.each do |review| %>
+            <p class="card-text"><strong>Review: </strong><%= review.comment %></p>
+            <p class="card-text"><strong>Rating: </strong><%= review.rating %></p>
+            <hr>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <button type="button" class="btn btn-outline-primary my-3"><%= link_to 'Back', root_path %></button>
+  <div class="row mt-5 d-flex flex-row justify-content-between">
+    <%# <div class="col-12 col-md-6"> %>
+      <div class="card col-6 col-md-6 my-3 bg-warning border-0" id="add_bookmark">
+        <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
+      </div>
+    <%# </div> %>
+    <%# <div class="col-12 col-md-6"> %>
+      <div class="card col-6 col-md-6 my-3 bg-warning border-light border-3 border-top-0 border-end-0 border-bottom-0" id="add_review">
+      <%= render "reviews/form", list: @list, review: @review %>
+      </div>
+    <%# </div> %>
+  </div>
 
+  <div class="row mt-5">
+    <button type="button" class="btn btn-outline-primary my-3"><%= link_to 'Back', root_path %></button>
+  </div>
 </div>
