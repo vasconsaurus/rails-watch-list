@@ -5,7 +5,7 @@
       <h5 class="mb-5">New Bookmark</h5>
       <%= simple_form_for [ list, bookmark ] do |f| %>
         <%= f.association :movie, collection: Movie.order(:title) %>
-        <%= f.input :comment %>
+        <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
         <div class="d-grid">
           <%= f.submit "Add new Bookmark", class: 'btn btn-secondary'%>
         </div>
