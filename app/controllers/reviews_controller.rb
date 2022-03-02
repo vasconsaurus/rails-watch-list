@@ -1,15 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :find_list, only: %i[new create]
-
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
+    @list = List.find(params[:list_id])
     @review.list = @list
 
-    if @bookmark.save
+    if @review.save
       redirect_to list_path(@list)
     else
       render 'lists/show'
@@ -26,9 +21,5 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:comment, :rating)
-  end
-
-  def find_list
-    @list = List.find(params[:list_id])
   end
 end

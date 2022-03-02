@@ -1,15 +1,22 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),
                           rgba(0,0,0,0.3)),
                           url('<%= cl_image_path @list.photo.key, crop: :fill, gravity: :face %>')">
-  <div class="container">
-      <h1><%= @list.name %></h1>
+  <div class="container container-banner">
+      <h1 class="mb-5"><%= @list.name %></h1>
+      <div class="d-flex gap-3 justify-content-start links-banner">
+        <h5><a href="#add_review" class="btn btn-secondary mr-5">
+                <span class="material-icons-outlined" style="vertical-align: -6px;">grade</span>
+                Review this List</a></h5>
+        <h5><a href="#add_bookmark" class="btn btn-secondary">
+                <span class="material-icons-outlined" style="vertical-align: -6px;">add_circle_outline</span>
+                Add Bookmark</a></h5>
+      </div>
   </div>
 </div>
 
-<br>
 <div class="container">
 
-  <div class="row">
+  <div class="row mt-5">
     <% @list.bookmarks.includes(:movie).each do |bookmark| %>
       <div class="col-12 col-md-6">
         <div class="card my-3">
@@ -17,9 +24,9 @@
           <div class="card-body">
             <h3 class="card-title mt-2"><%= bookmark.movie.title %></h3>
             <p class="card-text"><%= bookmark.movie.overview %></p>
-            <p class="card-text mt-4"> Review: <%= bookmark.comment %></p>
+            <p class="card-text mt-4 review"> <strong>Review:</strong> <%= bookmark.comment %></p>
             <%= link_to bookmark_path(bookmark), method: 'DELETE', data: { confirm: 'Are you sure?' } do %>
-              <p><span class="material-icons-outlined">delete_outline</span> delete </p>
+              <p><span class="material-icons-outlined"  style="vertical-align: -6px;">delete_outline</span> delete </p>
             <% end %>
           </div>
         </div>
@@ -27,19 +34,19 @@
     <% end %>
   </div>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-12 col-md-6 ">
-      <div class="card my-3 bg-warning border-0">
+      <div class="card my-3 bg-warning border-0" id="add_bookmark">
         <%= render "bookmarks/form", list: @list, bookmark: @bookmark %>
       </div>
     </div>
     <div class="col-12 col-md-6">
-      <div class="card my-3 bg-warning border-0">
+      <div class="card my-3 bg-warning border-0" id="add_review">
       <%= render "reviews/form", list: @list, review: @review %>
       </div>
     </div>
   </div>
 
-  <%= link_to 'Back', root_path %>
+  <button type="button" class="btn btn-outline-primary my-3"><%= link_to 'Back', root_path %></button>
 
 </div>

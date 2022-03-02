@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8 my-5">
+    <div class="col-12 my-5">
       <span class="material-icons-outlined">grade</span>
       <h5 class="mb-5">Review this list</h5>
-
       <%= simple_form_for [ list, review ] do |f| %>
         <%= f.input :comment %>
         <%= f.input :rating %>
-        <%= f.submit "Add new Review", class: 'btn btn-light'%>
+        <div class="d-grid">
+          <%= f.submit "Add new Review", class: 'btn btn-secondary'%>
+          </div>
       <% end %>
-
     </div>
   </div>
 </div>
